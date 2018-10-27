@@ -1,0 +1,37 @@
+package cn.vivian.cloudstudyredislock;
+
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
+
+@Component
+public class RedisLocker implements DistributedLocker {
+
+    private final static String LOCKER_PREFIX = "lock:";
+
+    @Resource
+    private RedissonConnector redissonConnector;
+
+    @Override
+    public <T> T lock(String resourceName, AquiredLockWorker<T> worker) throws Exception {
+        return lock(resourceName, worker, 100);
+    }
+
+    @Override
+    public <T> T lock(String resourceName, AquiredLockWorker<T> worker, int lockTime) throws Exception {
+        RedissonClient redisson = redissonConnector.getRedisson();
+        RLock lock = redisson.getLock(LOCKER_PREFIX + resourceName);
+        boolean success = lock.tryLock(100, lockTime, TimeUnit.SECONDS);
+        if (success) {
+            try {
+                return worker.invokeAfterLockAquire();
+            } finally {
+                lock.unlock();
+            }
+        }
+        throw new UnableToAquireLockException();
+    }
+}

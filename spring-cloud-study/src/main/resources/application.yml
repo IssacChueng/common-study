@@ -1,0 +1,13 @@
+server:
+  port: 1111
+eureka:
+  client:
+    #register-with-eureka: false
+    #fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    appname: spring-cloud-study-server
+    hostname: localhost
+  server:
+    enable-self-preservation: false
