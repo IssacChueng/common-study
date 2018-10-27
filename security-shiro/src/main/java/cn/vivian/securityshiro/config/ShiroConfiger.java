@@ -119,6 +119,7 @@ public class ShiroConfiger {
     public RedisCacheManager redisCacheManager(RedisManager redisManager) {
         RedisCacheManager redisCacheManager = new RedisCacheManager();
         redisCacheManager.setRedisManager(redisManager);
+        redisCacheManager.setPrincipalIdFieldName("userId");
         return redisCacheManager;
     }
 

@@ -57,7 +57,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new UnknownAccountException("未知用户");
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                userDto.getUserId(), userDto.getPassword(),
+                userDto, userDto.getPassword(),
                 new MySimpleByteSource(SimpleByteSource.Util.bytes(userDto.getSalt())),
                 getName()
         );

@@ -25,13 +25,13 @@ public class LoginController {
         UsernamePasswordToken token = new UsernamePasswordToken(userId, password);
         //token.setRememberMe(true);
         Subject subject = SecurityUtils.getSubject();
-        System.out.println(subject.getPrincipal());
         subject.login(token);
+        System.out.println(subject.getPrincipal() + " " + subject.getPrincipal().getClass().getCanonicalName());
         new UserDto();
         return ResponseEntity.ok(userDto);
     }
 
-    //@RequiresPermissions("userInfo:indexx")
+    @RequiresPermissions("userInfo:index")
     @GetMapping(value = "index", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Object> index() {
         return ResponseEntity.ok("{\"userId\":\"token\"}");
