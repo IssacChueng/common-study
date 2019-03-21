@@ -40,13 +40,13 @@ import java.util.Map;
 @Configuration
 public class ShiroConfiger {
 
-    @Value("${redis.host}")
+    @Value("${spring.redis.host}")
     private String redisHost;
 
-    @Value("${redis.port}")
+    @Value("${spring.redis.port}")
     private Integer redisPort;
 
-    @Value("${redis.password}")
+    @Value("${spring.redis.password}")
     private String redisPassword;
 
     @Bean

@@ -2,9 +2,11 @@ package com.vivian.swagger.controller;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class IndexController {
@@ -14,5 +16,13 @@ public class IndexController {
     @GetMapping("/indexs")
     public String index(@RequestParam(name = "data") String data) {
         return "Hello World";
+    }
+
+    @PostMapping(value = "/callBack", produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8"})
+    @ApiOperation(value = "indexs")
+    @ResponseBody
+    public String callBack(@RequestBody Map<String, String> data) {
+        System.out.println(data);
+        return "{}";
     }
 }

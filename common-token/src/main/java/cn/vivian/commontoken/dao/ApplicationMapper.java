@@ -14,6 +14,4 @@ public interface ApplicationMapper {
     int updateByPrimaryKeySelective(Application record);
 
     int updateByPrimaryKey(Application record);
-
-    Application selectByAppKey(String appKey);
 }

@@ -24,12 +24,6 @@
     from t_application
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectByAppKey" resultType="cn.vivian.commontoken.model.Application">
-    SELECT
-    <include refid="Base_Column_List"/>
-    FROM t_application
-    WHERE app_key = #{appKey, jdbcType=VARCHAR}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_application
     where id = #{id,jdbcType=VARCHAR}
@@ -167,4 +161,5 @@
       is_delete = #{isDelete,jdbcType=BIT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
 </mapper>

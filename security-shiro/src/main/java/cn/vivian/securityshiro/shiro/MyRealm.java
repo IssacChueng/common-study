@@ -10,6 +10,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.SimpleByteSource;
+import org.apache.shiro.util.StringUtils;
 
 /**
  * @author swzhang
@@ -56,11 +57,23 @@ public class MyRealm extends AuthorizingRealm {
         if (userDto == null) {
             throw new UnknownAccountException("未知用户");
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                userDto, userDto.getPassword(),
-                new MySimpleByteSource(SimpleByteSource.Util.bytes(userDto.getSalt())),
-                getName()
-        );
+        SimpleAuthenticationInfo authenticationInfo = null;
+
+        if (authToken instanceof MyToken) {
+            MyToken tokenInner = (MyToken) authToken;
+            if (StringUtils.hasText(tokenInner.getToken())) {
+                authenticationInfo = new SimpleAuthenticationInfo(userDto, userDto.getToken(),
+                        new MySimpleByteSource(SimpleByteSource.Util.bytes(userDto.getSalt())),
+                        getName());
+            }
+        }
+        if (authenticationInfo == null) {
+            authenticationInfo = new SimpleAuthenticationInfo(
+                    userDto, userDto.getPassword(),
+                    new MySimpleByteSource(SimpleByteSource.Util.bytes(userDto.getSalt())),
+                    getName()
+            );
+        }
         return authenticationInfo;
     }
 }

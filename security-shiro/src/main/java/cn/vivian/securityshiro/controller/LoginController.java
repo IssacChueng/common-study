@@ -1,6 +1,7 @@
 package cn.vivian.securityshiro.controller;
 
 import cn.vivian.securityshiro.dto.UserDto;
+import cn.vivian.securityshiro.shiro.MyToken;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -22,7 +23,7 @@ public class LoginController {
     public ResponseEntity<UserDto> login(@RequestBody UserDto userDto) {
         String userId = userDto.getUserId();
         String password = userDto.getPassword();
-        UsernamePasswordToken token = new UsernamePasswordToken(userId, password);
+        UsernamePasswordToken token = new MyToken(userId, password);
         //token.setRememberMe(true);
         Subject subject = SecurityUtils.getSubject();
         subject.login(token);
