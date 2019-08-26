@@ -1,8 +1,8 @@
 server:
-  port: 1112
+  port: 8889
 eureka:
   client:
     service-url:
-      defaultZone: http://peer1:1111/eureka
+      defaultZone: http://peer1:8888/eureka
   instance:
     hostname: peer2

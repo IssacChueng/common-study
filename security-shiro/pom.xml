@@ -11,7 +11,7 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>cn.vivian</groupId>
+        <groupId>cn.jeff</groupId>
         <artifactId>spring-boot-study</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
@@ -20,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>

@@ -6,16 +6,16 @@
     <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 <body ng-app="myApp">
-    <div ng-controller="myCtrl">
-        <select ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names">
+<div ng-controller="myCtrl">
+    <select ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names">
 
-        </select>
-    </div>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function ($scope) {
-            $scope.names = ["Google", "Runoob", "Taobao"];
-        });
-    </script>
+    </select>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.names = ["Google", "Runoob", "Taobao"];
+    });
+</script>
 </body>
 </html>

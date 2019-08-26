@@ -16,7 +16,7 @@
                         connectionURL="jdbc:mysql://192.168.3.206:3306/ai_2018_2" userId="joinhealth"
                         password="123456"/>
 
-        <javaModelGenerator targetPackage="cn.vivian.commontoken.model"
+        <javaModelGenerator targetPackage="cn.jeff.commontoken.model"
                             targetProject="C:\Users\vivian\IdeaProjects\spring-boot-study\common-token\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -27,7 +27,7 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="cn.vivian.commontoken.dao"
+        <javaClientGenerator targetPackage="cn.jeff.commontoken.dao"
                              targetProject="C:\Users\vivian\IdeaProjects\spring-boot-study\common-token\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>

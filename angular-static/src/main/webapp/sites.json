@@ -1,24 +1,24 @@
 {
-  "sites":[
+  "sites": [
     {
-      "name":"菜鸟教程",
-      "url":"www.runoob.com",
-      "country":"cn"
+      "name": "菜鸟教程",
+      "url": "www.runoob.com",
+      "country": "cn"
     },
     {
-      "name":"谷歌",
-      "url":"www.google.com",
-      "country":"usa"
+      "name": "谷歌",
+      "url": "www.google.com",
+      "country": "usa"
     },
     {
-      "name":"facebook",
-      "url":"www.facebook.com",
-      "country":"usa"
+      "name": "facebook",
+      "url": "www.facebook.com",
+      "country": "usa"
     },
     {
-      "name":"weibo",
-      "url":"www.weibo.com",
-      "country":"cn"
+      "name": "weibo",
+      "url": "www.weibo.com",
+      "country": "cn"
     }
   ]
 }

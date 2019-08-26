@@ -6,26 +6,26 @@
     <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 <body>
-    <!--<div ng-app="myScope" ng-controller="scopeCtrl">
-        <h1>{{carname}}</h1>
-    </div>-->
-    <div ng-app="myScope2" ng-controller="scope2Ctrl">
-        <input ng-model="name">
-        <h1>{{greeting}}</h1>
-        <button ng-click="sayHello()">点我</button>
-    </div>
-    <script>
-        /*var app = angular.module('myScope', []);
-        app.controller('scopeCtrl', function ($scope) {
-            $scope.carname = "Volvo";
-        });*/
-        var app2 = angular.module('myScope2', []);
-        app2.controller('scope2Ctrl', function ($scope) {
-            $scope.name = "Rubbo";
-            $scope.sayHello = function () {
-                $scope.greeting = $scope.name + 'Hello';
-            }
-        })
-    </script>
+<!--<div ng-app="myScope" ng-controller="scopeCtrl">
+    <h1>{{carname}}</h1>
+</div>-->
+<div ng-app="myScope2" ng-controller="scope2Ctrl">
+    <input ng-model="name">
+    <h1>{{greeting}}</h1>
+    <button ng-click="sayHello()">点我</button>
+</div>
+<script>
+    /*var app = angular.module('myScope', []);
+    app.controller('scopeCtrl', function ($scope) {
+        $scope.carname = "Volvo";
+    });*/
+    var app2 = angular.module('myScope2', []);
+    app2.controller('scope2Ctrl', function ($scope) {
+        $scope.name = "Rubbo";
+        $scope.sayHello = function () {
+            $scope.greeting = $scope.name + 'Hello';
+        }
+    })
+</script>
 </body>
 </html>

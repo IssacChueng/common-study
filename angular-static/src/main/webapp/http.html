@@ -6,19 +6,21 @@
     <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 <body>
-    <div ng-app="myApp" ng-controller="siteCtl">
-        names: {{names}}
-    </div>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('siteCtl', function ($scope, $http) {
-            $http({
-                method: 'GET',
-                url: 'http://localhost:8080/angular/sites.json'
-            }).then(function (response) {
-                $scope.names = response.data;
-            }, function (reason) { console.log(reason) })
+<div ng-app="myApp" ng-controller="siteCtl">
+    names: {{names}}
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('siteCtl', function ($scope, $http) {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:8080/angular/sites.json'
+        }).then(function (response) {
+            $scope.names = response.data;
+        }, function (reason) {
+            console.log(reason)
         })
-    </script>
+    })
+</script>
 </body>
 </html>

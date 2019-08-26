@@ -1,170 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.vivian.commontoken.dao.ApplicationMapper">
-  <resultMap id="BaseResultMap" type="cn.vivian.commontoken.model.Application">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="app_name" jdbcType="VARCHAR" property="appName" />
-    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
-    <result column="app_secret" jdbcType="VARCHAR" property="appSecret" />
-    <result column="app_desc" jdbcType="VARCHAR" property="appDesc" />
-    <result column="call_back_url" jdbcType="VARCHAR" property="callBackUrl" />
-    <result column="hosp_name" jdbcType="VARCHAR" property="hospName" />
-    <result column="hosp_code" jdbcType="VARCHAR" property="hospCode" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="is_delete" jdbcType="BIT" property="isDelete" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, app_name, app_key, app_secret, app_desc, call_back_url, hosp_name, hosp_code, 
-    create_time, update_time, is_delete
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_application
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <select id="selectByAppKey" resultType="cn.vivian.commontoken.model.Application">
-    SELECT
-    <include refid="Base_Column_List"/>
-    FROM t_application
-    WHERE app_key = #{appKey, jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from t_application
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.vivian.commontoken.model.Application">
-    insert into t_application (id, app_name, app_key, 
-      app_secret, app_desc, call_back_url, 
-      hosp_name, hosp_code, create_time, 
-      update_time, is_delete)
-    values (#{id,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, 
-      #{appSecret,jdbcType=VARCHAR}, #{appDesc,jdbcType=VARCHAR}, #{callBackUrl,jdbcType=VARCHAR}, 
-      #{hospName,jdbcType=VARCHAR}, #{hospCode,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.vivian.commontoken.model.Application">
-    insert into t_application
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="appName != null">
-        app_name,
-      </if>
-      <if test="appKey != null">
-        app_key,
-      </if>
-      <if test="appSecret != null">
-        app_secret,
-      </if>
-      <if test="appDesc != null">
-        app_desc,
-      </if>
-      <if test="callBackUrl != null">
-        call_back_url,
-      </if>
-      <if test="hospName != null">
-        hosp_name,
-      </if>
-      <if test="hospCode != null">
-        hosp_code,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-      <if test="isDelete != null">
-        is_delete,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="appName != null">
-        #{appName,jdbcType=VARCHAR},
-      </if>
-      <if test="appKey != null">
-        #{appKey,jdbcType=VARCHAR},
-      </if>
-      <if test="appSecret != null">
-        #{appSecret,jdbcType=VARCHAR},
-      </if>
-      <if test="appDesc != null">
-        #{appDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="callBackUrl != null">
-        #{callBackUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="hospName != null">
-        #{hospName,jdbcType=VARCHAR},
-      </if>
-      <if test="hospCode != null">
-        #{hospCode,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=BIT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.vivian.commontoken.model.Application">
-    update t_application
-    <set>
-      <if test="appName != null">
-        app_name = #{appName,jdbcType=VARCHAR},
-      </if>
-      <if test="appKey != null">
+<mapper namespace="cn.jeff.commontoken.dao.ApplicationMapper">
+    <resultMap id="BaseResultMap" type="cn.jeff.commontoken.model.Application">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="app_name" jdbcType="VARCHAR" property="appName"/>
+        <result column="app_key" jdbcType="VARCHAR" property="appKey"/>
+        <result column="app_secret" jdbcType="VARCHAR" property="appSecret"/>
+        <result column="app_desc" jdbcType="VARCHAR" property="appDesc"/>
+        <result column="call_back_url" jdbcType="VARCHAR" property="callBackUrl"/>
+        <result column="hosp_name" jdbcType="VARCHAR" property="hospName"/>
+        <result column="hosp_code" jdbcType="VARCHAR" property="hospCode"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, app_name, app_key, app_secret, app_desc, call_back_url, hosp_name, hosp_code,
+        create_time, update_time, is_delete
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_application
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByAppKey" resultType="cn.jeff.commontoken.model.Application">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_application
+        WHERE app_key = #{appKey, jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from t_application
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="cn.jeff.commontoken.model.Application">
+        insert into t_application (id, app_name, app_key,
+        app_secret, app_desc, call_back_url,
+        hosp_name, hosp_code, create_time,
+        update_time, is_delete)
+        values (#{id,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR},
+        #{appSecret,jdbcType=VARCHAR}, #{appDesc,jdbcType=VARCHAR}, #{callBackUrl,jdbcType=VARCHAR},
+        #{hospName,jdbcType=VARCHAR}, #{hospCode,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+        #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.jeff.commontoken.model.Application">
+        insert into t_application
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="appName != null">
+                app_name,
+            </if>
+            <if test="appKey != null">
+                app_key,
+            </if>
+            <if test="appSecret != null">
+                app_secret,
+            </if>
+            <if test="appDesc != null">
+                app_desc,
+            </if>
+            <if test="callBackUrl != null">
+                call_back_url,
+            </if>
+            <if test="hospName != null">
+                hosp_name,
+            </if>
+            <if test="hospCode != null">
+                hosp_code,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="appName != null">
+                #{appName,jdbcType=VARCHAR},
+            </if>
+            <if test="appKey != null">
+                #{appKey,jdbcType=VARCHAR},
+            </if>
+            <if test="appSecret != null">
+                #{appSecret,jdbcType=VARCHAR},
+            </if>
+            <if test="appDesc != null">
+                #{appDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="callBackUrl != null">
+                #{callBackUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="hospName != null">
+                #{hospName,jdbcType=VARCHAR},
+            </if>
+            <if test="hospCode != null">
+                #{hospCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.jeff.commontoken.model.Application">
+        update t_application
+        <set>
+            <if test="appName != null">
+                app_name = #{appName,jdbcType=VARCHAR},
+            </if>
+            <if test="appKey != null">
+                app_key = #{appKey,jdbcType=VARCHAR},
+            </if>
+            <if test="appSecret != null">
+                app_secret = #{appSecret,jdbcType=VARCHAR},
+            </if>
+            <if test="appDesc != null">
+                app_desc = #{appDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="callBackUrl != null">
+                call_back_url = #{callBackUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="hospName != null">
+                hosp_name = #{hospName,jdbcType=VARCHAR},
+            </if>
+            <if test="hospCode != null">
+                hosp_code = #{hospCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.jeff.commontoken.model.Application">
+        update t_application
+        set app_name = #{appName,jdbcType=VARCHAR},
         app_key = #{appKey,jdbcType=VARCHAR},
-      </if>
-      <if test="appSecret != null">
         app_secret = #{appSecret,jdbcType=VARCHAR},
-      </if>
-      <if test="appDesc != null">
         app_desc = #{appDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="callBackUrl != null">
         call_back_url = #{callBackUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="hospName != null">
         hosp_name = #{hospName,jdbcType=VARCHAR},
-      </if>
-      <if test="hospCode != null">
         hosp_code = #{hospCode,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=BIT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.vivian.commontoken.model.Application">
-    update t_application
-    set app_name = #{appName,jdbcType=VARCHAR},
-      app_key = #{appKey,jdbcType=VARCHAR},
-      app_secret = #{appSecret,jdbcType=VARCHAR},
-      app_desc = #{appDesc,jdbcType=VARCHAR},
-      call_back_url = #{callBackUrl,jdbcType=VARCHAR},
-      hosp_name = #{hospName,jdbcType=VARCHAR},
-      hosp_code = #{hospCode,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_delete = #{isDelete,jdbcType=BIT}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+        is_delete = #{isDelete,jdbcType=BIT}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>
