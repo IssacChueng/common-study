@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
     @Override
     public UserDto getUser(String userId) {
         if (userId.equals("123")) {

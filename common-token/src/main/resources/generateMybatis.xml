@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Users\vivian\.m2\repository\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar"/>
+            location="C:\Users\jeff\.m2\repository\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -17,18 +17,18 @@
                         password="123456"/>
 
         <javaModelGenerator targetPackage="cn.jeff.commontoken.model"
-                            targetProject="C:\Users\vivian\IdeaProjects\spring-boot-study\common-token\src\main\java">
+                            targetProject="C:\Users\jeff\IdeaProjects\spring-boot-study\common-token\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="C:\Users\vivian\IdeaProjects\spring-boot-study\common-token\src\main\resources">
+                         targetProject="C:\Users\jeff\IdeaProjects\spring-boot-study\common-token\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="cn.jeff.commontoken.dao"
-                             targetProject="C:\Users\vivian\IdeaProjects\spring-boot-study\common-token\src\main\java"
+                             targetProject="C:\Users\jeff\IdeaProjects\spring-boot-study\common-token\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

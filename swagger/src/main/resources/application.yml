@@ -2,4 +2,4 @@ spring:
   application:
     name: study
 server:
-  port: 800
+  port: 8000

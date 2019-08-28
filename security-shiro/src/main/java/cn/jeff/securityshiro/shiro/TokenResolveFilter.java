@@ -23,7 +23,7 @@ public class TokenResolveFilter extends UserFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         boolean logined = false;
-        if (isLoginAttemp(request)) {
+        if (isLoginAttempt(request)) {
             logined = doLogin(request, response);
         }
         if (logined) {
@@ -37,29 +37,26 @@ public class TokenResolveFilter extends UserFilter {
         HttpServletRequest httpRequest = WebUtils.toHttp(request);
         String userId = httpRequest.getHeader("userId");
         String token = httpRequest.getHeader("token");
-        if (StringUtils.isEmpty(userId) || StringUtils.isEmpty(token)) {
-            return false;
-        } else {
-            UsernamePasswordToken loginInfo = new UsernamePasswordToken(userId, token);
-            Subject subject = SecurityUtils.getSubject();
-            try {
-                subject.login(loginInfo);
-                return true;
-            } catch (AuthenticationException e) {
-                sendChallenge(request, response);
-            }
+        MyToken loginInfo = new MyToken(userId, token);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(loginInfo);
+            return true;
+        } catch (AuthenticationException e) {
+            sendChallenge(request, response);
         }
         return false;
 
     }
 
-    protected boolean isLoginAttemp(ServletRequest request) {
+    protected boolean isLoginAttempt(ServletRequest request) {
         HttpServletRequest httpRequest = WebUtils.toHttp(request);
-        String isRememberMe = httpRequest.getHeader("rememberMe");
-        if (StringUtils.hasText(isRememberMe) && "true".equals(isRememberMe)) {
-            return true;
-        } else {
+        String userId = httpRequest.getHeader("userId");
+        String token = httpRequest.getHeader("token");
+        if (StringUtils.isEmpty(userId) || StringUtils.isEmpty(token)) {
             return false;
+        } else {
+            return true;
         }
     }
 

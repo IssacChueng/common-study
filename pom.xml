@@ -32,6 +32,8 @@
 		<module>spring-cloud-study</module>
 		<module>cloud-study-consumer</module>
 		<module>guava-study</module>
+		<module>gamekyller</module>
+		<module>redis-hash</module>
 	</modules>
 
 	<properties>
