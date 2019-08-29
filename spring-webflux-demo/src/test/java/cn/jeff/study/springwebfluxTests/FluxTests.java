@@ -1,19 +1,15 @@
-package cn.jeff.study.springwebflux;
+package cn.jeff.study.springwebfluxTests;
 
 import org.junit.Test;
-import org.reactivestreams.Publisher;
-import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Scheduler;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.EmptyStackException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
 
 /**
  * @author swzhang
@@ -138,7 +134,106 @@ public class FluxTests {
     public void testTake() {
         Flux.range(1, 1000)
                 .take(10)
+                .takeLast(2)
                 .subscribe(System.out::print);
 
+        Flux.range(10, 200)
+                .takeUntil(i -> i > 100)
+                .subscribe(System.out::println);
+
     }
+
+    @Test
+    public void testTakeWhile() {
+        Flux.range(100, 1001)
+                .takeWhile( i -> i > 90)
+                .subscribe(System.out::print);
+
+        System.out.println("\n---------");
+
+        Flux.range(10, 100)
+                .takeWhile(i -> i > 20)
+                .subscribe(System.out::println);
+
+        Flux.interval(Duration.ofMillis(30))
+                .takeUntilOther(Flux.interval(Duration.ofMillis(3000), Duration.ofMillis(1000)))
+                .toStream()
+                .forEach(System.out::println);
+
+    }
+
+    @Test
+    public void testReduce() {
+        Flux.range(10, 100)
+                .reduce(Integer::sum)
+                .subscribe(System.out::println);
+    }
+
+    @Test
+    public void testReduceWith() {
+        Flux.range(10, 100)
+                .reduceWith(() -> 100, (x, y) -> x + y)
+                .subscribe(System.out::println);
+    }
+
+    @Test
+    public void testMerge() {
+        Flux.merge(Flux.interval(Duration.ofMillis(0), Duration.ofMillis(100)).take(5), Flux.interval(Duration.ofMillis(50), Duration.ofMillis(100)).take(5))
+                .toStream()
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testMergeSequential() {
+        Flux.mergeSequential(Flux.interval(Duration.ofMillis(0), Duration.ofMillis(100)).take(5), Flux.interval(Duration.ofMillis(50), Duration.ofMillis(100)).take(5))
+                .toStream()
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testFlatMap() {
+        Flux.just(5, 10)
+                .flatMap( x -> Flux.interval(Duration.ofMillis(x * 10), Duration.ofMillis(100)).take(x))
+                .toStream()
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testFlatMapSequential() {
+        Flux.just(5, 10)
+                .flatMapSequential( x -> Flux.interval(Duration.ofMillis(x * 10), Duration.ofMillis(100)).take(x))
+                .toStream()
+                .forEach(System.out::println);
+
+    }
+
+    @Test
+    public void testConcatMap() {
+        Flux.just(5, 10)
+                .concatMap( x -> Flux.interval(Duration.ofMillis(x * 10), Duration.ofMillis(100)).take(x))
+                .toStream()
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testCombineLatest() {
+        Flux.combineLatest(
+                Arrays::toString,
+                Flux.interval(Duration.ofMillis(100)).take(5),
+                Flux.interval(Duration.ofMillis(50), Duration.ofMillis(100)).take(5)
+        ).toStream().forEach(System.out::println);
+    }
+
+
+
+    @Test
+    public void testWindow() {
+
+        Flux.range(1, 200)
+                .window(20)
+                .subscribe(System.out::println);
+    }
+
+
+
 }

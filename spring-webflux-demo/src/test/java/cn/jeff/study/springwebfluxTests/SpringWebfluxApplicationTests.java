@@ -1,4 +1,4 @@
-package cn.jeff.study.springwebflux;
+package cn.jeff.study.springwebfluxTests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
